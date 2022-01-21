@@ -1,17 +1,23 @@
-# Add more folders to ship with the application, here
-folder_01.source = qml/coincatcher
-folder_01.target = qml
-DEPLOYMENTFOLDERS = folder_01
+QT += qml quick
 
-# Additional import path used to resolve QML modules in Creator's code model
+CONFIG += c++11
+
+# You can make your code fail to compile if it uses deprecated APIs.
+# In order to do so, uncomment the following line.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+SOURCES += \
+        src/main.cpp
+
+RESOURCES += qml.qrc
+
+# Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 
-# The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+# Additional import path used to resolve QML modules just for Qt Quick Designer
+QML_DESIGNER_IMPORT_PATH =
 
-# Installation path
-# target.path =
-
-# Please do not modify the following two lines. Required for deployment.
-include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
-qtcAddDeployment()
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target

@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file alias="main.qml">qml/main.qml</file>
+        <file alias="Components/Cloud.qml">qml/Components/Cloud.qml</file>
+        <file alias="Components/GameOverPopup.qml">qml/Components/GameOverPopup.qml</file>
+        <file alias="Components/Coin.qml">qml/Components/Coin.qml</file>
+        <file alias="Components/Shell.qml">qml/Components/Shell.qml</file>
+        <file alias="Components/ShellPipe.qml">qml/Components/ShellPipe.qml</file>
+        <file alias="Components/Brick.qml">qml/Components/Brick.qml</file>
+        <file alias="Components/WarpPipe.qml">qml/Components/WarpPipe.qml</file>
+        <file alias="Components/Player.qml">qml/Components/Player.qml</file>
+    </qresource>
+    <qresource prefix="/js">
+        <file alias="GameLogic.js">js/GameLogic.js</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file alias="brick.png">images/brick.png</file>
+        <file alias="brick-question.png">images/brick-question.png</file>
+        <file alias="cc_background.png">images/cc_background.png</file>
+        <file alias="cc_ground.png">images/cc_ground.png</file>
+        <file alias="cloud_01.png">images/cloud_01.png</file>
+        <file alias="cloud_02.png">images/cloud_02.png</file>
+        <file alias="cloud_03.png">images/cloud_03.png</file>
+        <file alias="cloud_close.png">images/cloud_close.png</file>
+        <file alias="coin.png">images/coin.png</file>
+        <file alias="flower-closed.png">images/flower-closed.png</file>
+        <file alias="flower-opened.png">images/flower-opened.png</file>
+        <file alias="heart-off.png">images/heart-off.png</file>
+        <file alias="heart-on.png">images/heart-on.png</file>
+        <file alias="shellback.png">images/shellback.png</file>
+        <file alias="shellcenter.png">images/shellcenter.png</file>
+        <file alias="shellleft.png">images/shellleft.png</file>
+        <file alias="shellright.png">images/shellright.png</file>
+        <file alias="skull.png">images/skull.png</file>
+        <file alias="tube.png">images/tube.png</file>
+    </qresource>
+</RCC>
