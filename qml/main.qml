@@ -10,7 +10,9 @@ import "qrc:/js/GameLogic.js" as GameLogic
 ApplicationWindow {
     id: board
     visible: true
-    visibility: Window.FullScreen
+//    visibility: Window.FullScreen
+    width: 1920
+    height: 1080
     color: "black"
     title: qsTr("Coin Catcher")
 
@@ -58,9 +60,11 @@ ApplicationWindow {
 
         onTriggered: {
             var dir
+
             do dir = GameLogic.getRandom(1, 3)
             while (dir === prevDirection)
-                prevDirection = dir
+
+            prevDirection = dir
 
             if (dir === 1)
                 GameLogic.createShellPipe(-182, GameLogic.getRandom(board.height/10.8, board.height/1.35), "left")
@@ -74,7 +78,6 @@ ApplicationWindow {
     Image {
         id: background
         anchors { fill: parent }
-        fillMode: Image.PreserveAspectFit
         source: "qrc:/images/cc_background.png"
     }
 
@@ -112,10 +115,11 @@ ApplicationWindow {
     MouseArea {
         anchors { fill: parent }
         hoverEnabled: true
+        cursorShape: Qt.BlankCursor
 
-        onMouseXChanged: player.updatePosition(mouse)
+        onMouseXChanged: (mouse) => player.updatePosition(mouse)
 
-        onMouseYChanged: player.updatePosition(mouse)
+        onMouseYChanged: (mouse) => player.updatePosition(mouse)
     }
 
     GameOverPopup {
@@ -136,7 +140,6 @@ ApplicationWindow {
     Image {
         z: 1000
         anchors { fill: parent }
-        fillMode: Image.PreserveAspectFit
         source: "qrc:/images/cc_ground.png"
     }
 }

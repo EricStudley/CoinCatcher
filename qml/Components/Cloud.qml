@@ -14,7 +14,7 @@ Image {
     property int coinSpawnSpeedHigh: 2500
 
     Component.onCompleted: {
-        x = Screen.width
+        x = board.width
         state = (GameLogic.getRandom(1, 20) < 20) ? "normal" : "rainy"
     }
 
@@ -24,20 +24,19 @@ Image {
                 easing.type: Easing.Linear
                 duration: GameLogic.getRandom(cloudSpeedLow, cloudSpeedHigh)
             }
-            ScriptAction { script: GameLogic.destroyObject(cloud) }
+            ScriptAction { script: cloud.destroy() }
         }
     }
 
     Timer {
-        id: fallingCoinTimer
         repeat: true
         running: true
         interval: GameLogic.getRandom(coinSpawnSpeedLow, coinSpawnSpeedHigh)
-                  * (cloud.state == "normal" ? 1 : 0.1)
+                  * (cloud.state === "normal" ? 1 : 0.1)
 
         onTriggered: {
-            const size = (cloud.state == "normal") ? 70 : 30
-            const x = cloud.x, y = cloud.y, w = cloud.width, h = cloud.height
+            var size = (cloud.state === "normal") ? 70 : 30
+            var x = cloud.x, y = cloud.y, w = cloud.width, h = cloud.height
             GameLogic.createCoin(GameLogic.getRandom(x + w/6, x + w - w/6),
                                  GameLogic.getRandom(y + h/6, y + h - h/6),
                                  size)

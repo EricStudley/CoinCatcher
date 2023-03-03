@@ -19,9 +19,9 @@ Image {
 
     Component.onCompleted: {
         switch (direction) {
-        case "left": x = Screen.width; break
+        case "left": x = board.width; break
         case "right": x = -width; break
-        default: y = Screen.height / 6; break
+        default: y = board.height / 6; break
         }
     }
 
@@ -40,7 +40,7 @@ Image {
     Behavior on opacity {
         SequentialAnimation {
             PropertyAnimation{ duration: 300 }
-            ScriptAction { script: GameLogic.destroyObject(shell) }
+            ScriptAction { script: shell.destroy() }
         }
     }
 
@@ -48,7 +48,7 @@ Image {
         SequentialAnimation {
             PauseAnimation { duration: 1000 }
             PropertyAnimation { duration: shellSpeed }
-            ScriptAction { script: GameLogic.destroyObject(shell) }
+            ScriptAction { script: shell.destroy() }
         }
     }
 
@@ -63,10 +63,10 @@ Image {
                 target: shell
                 easing.type: Easing.InSine
                 property: "y"
-                to: Screen.height
+                to: board.height
                 duration: shellSpeed / 2
             }
-            ScriptAction { script: GameLogic.destroyObject(shell) }
+            ScriptAction { script: shell.destroy() }
         }
     }
 

@@ -4,8 +4,8 @@ import QtQuick.Window 2.12
 import "qrc:/js/GameLogic.js" as GameLogic
 
 Image {
-    x: Screen.width/2 - width/2
-    y: Screen.height
+    x: board.width/2 - width/2
+    y: board.height
     fillMode: Image.PreserveAspectFit
     source: "qrc:/images/tube.png"
 
@@ -15,7 +15,7 @@ Image {
             PauseAnimation { duration: 2000 }
             ScriptAction { script: { player.movable = true } }
             PauseAnimation { duration: 3000 }
-            PropertyAnimation { target: warpPipe; property: "y"; to: Screen.height }
+            PropertyAnimation { target: warpPipe; property: "y"; to: board.height }
         }
     }
 }

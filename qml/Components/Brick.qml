@@ -28,21 +28,21 @@ Image {
     Connections {
         target: player
 
-        onXChanged: checkBrickCollision()
+        function onXChanged() { checkBrickCollision() }
 
-        onYChanged: checkBrickCollision()
+        function onYChanged() { checkBrickCollision() }
     }
 
     Connections {
         target: board
 
-        onClearBricks: crash()
+        function onClearBricks() { crash() }
     }
 
     Behavior on opacity {
         SequentialAnimation {
             PropertyAnimation { duration: 400 }
-            ScriptAction { script: GameLogic.destroyObject(brick) }
+            ScriptAction { script: brick.destroy() }
         }
     }
 }

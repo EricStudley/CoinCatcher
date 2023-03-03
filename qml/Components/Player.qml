@@ -5,8 +5,8 @@ import "qrc:/js/GameLogic.js" as GameLogic
 
 Image {
     id: player
-    x: Screen.width / 2 - width / 2
-    y: Screen.height + 200
+    x: board.width / 2 - width / 2
+    y: board.height + 200
     fillMode: Image.PreserveAspectFit
     source: "qrc:/images/flower-" + state + ".png"
     state: "closed"

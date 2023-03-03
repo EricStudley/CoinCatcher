@@ -14,7 +14,7 @@ Image {
     Component.onCompleted: {
         switch (direction) {
         case "bottom":
-            y = Screen.height - height - 103
+            y = board.height - height
             break
         case "left":
             rotation = 90
@@ -22,7 +22,7 @@ Image {
             break
         case "right":
             rotation = 270
-            x = Screen.width - height + 20
+            x = board.width - height + 20
             break
         }
     }
@@ -35,17 +35,17 @@ Image {
                 target: shellPipe
                 property: "x"
                 to: direction == "left" ? -shellPipe.height
-                                        : Screen.width + 20
+                                        : board.width + 20
             }
-            ScriptAction { script: GameLogic.destroyObject(shellPipe) }
+            ScriptAction { script: shellPipe.destroy() }
         }
     }
     Behavior on y {
         SequentialAnimation {
             PropertyAnimation { easing.type: Easing.InSine; duration: 1000 }
             PauseAnimation { duration: 3000 }
-            PropertyAnimation { target: shellPipe; property: "y"; to: Screen.height }
-            ScriptAction { script: GameLogic.destroyObject(shellPipe) }
+            PropertyAnimation { target: shellPipe; property: "y"; to: board.height }
+            ScriptAction { script: shellPipe.destroy() }
         }
     }
 }

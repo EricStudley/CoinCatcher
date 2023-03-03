@@ -11,25 +11,25 @@ Image {
 
     onYChanged: checkCoinCollision()
 
-    property bool collected: false
+    property bool instantiated: false
 
     property int coinSpeedLow: 2000
     property int coinSpeedHigh: 3000
 
     function checkCoinCollision() {
-        if (collected)
+        if (!instantiated)
             return
 
         if (GameLogic.checkCollision(player, this)) {
-            collected = true
             points++
-            GameLogic.destroyObject(this)
+            coin.destroy()
         }
     }
 
     Component.onCompleted: {
-        y = Screen.height - height - 100
+        y = board.height - height - 100
         opacity = 1
+        instantiated = true
     }
 
     Behavior on y {
@@ -41,31 +41,31 @@ Image {
             PropertyAnimation {
                 easing.type: Easing.InSine
                 properties: "y"
-                to: Screen.height - 103 - coin.height
+                to: board.height - coin.height
                 duration: 500
             }
             PropertyAnimation {
                 easing.type: Easing.InSine
                 properties: "y"
-                to: (Screen.height - 103 - coin.height) - GameLogic.getRandom(0, coin.height / 6)
+                to: (board.height - coin.height) - GameLogic.getRandom(0, coin.height / 6)
                 duration: 500
             }
             PropertyAnimation {
                 easing.type: Easing.InSine
                 properties: "y"
-                to: Screen.height - 103 - coin.height
+                to: board.height - coin.height
                 duration: 500
             }
             ParallelAnimation {
                 PropertyAnimation {
                     easing.type: Easing.InSine
                     properties: "y"
-                    to: Screen.height
+                    to: board.height
                     duration: 500
                 }
                 PropertyAnimation { target: coin; property: "opacity"; to: 0; duration: 500 }
             }
-            ScriptAction { script: GameLogic.destroyObject(coin) }
+            ScriptAction { script: coin.destroy() }
         }
     }
 }
